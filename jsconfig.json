@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ],
+      "@services": [
+        "./src/services"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@config": [
+        "./src/config"
+      ],
+      "@config/*": [
+        "./src/config/*"
+      ],
+      "@api": [
+        "./src/api"
+      ],
+      "@api/*": [
+        "./src/api/*"
+      ],
+      "@routes": [
+        "./src/routes"
+      ],
+      "@routes/*": [
+        "./src/routes/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
