@@ -12,7 +12,7 @@ const getPlant = (callback = () => { }) => {
 
 const getPlantById = (_id, callback = () => { }) => {
   const o_id = mongo.ObjectId(_id)
-  plant.find({ _id: o_id }, (error, plantResponse) => {
+  plant.findOne({ _id: o_id }, (error, plantResponse) => {
     if (error) { return callback(null, error) }
     return callback(plantResponse, null)
   })

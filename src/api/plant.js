@@ -34,16 +34,11 @@ router.post(INSERT_PLANT_ENDPOINT, (req, res) => {
   const location = _.get(req.body, 'location') // { lat: 0, long: 0 }
   const tags = _.get(req.body, 'tags')
   const season = _.get(req.body, 'season')
-  // const rating = _.get(req.body, 'rating')
-  // const comments = _.get(req.body, 'comments', [])
-  // {
-  //   rating: 3,
-  //   name: '',
-  //   comment: '',
-  //   createtime: 1232323
-  // }
-
-  const plant = { name, detail, images, location, tags, season }
+  const rating = _.get(req.body, 'rating')
+  const comments = _.get(req.body, 'comments', [])
+  const category = _.get(req.body, 'category', '')
+  // { rating: 3, name: '', comment: '', createtime: 1232323 }
+  const plant = { name, detail, images, location, tags, season, rating, comments, category }
   plantService.insertPlant(plant, (response, error) => {
     if (error) { return res.json({ code: RESPONSE_CODE.INTERNAL_SERVER_ERROR, status: RESPONSE_STATUS.FAILURE, error }) }
     return res.json({ code: RESPONSE_CODE.OK, status: RESPONSE_STATUS.SUCCESS, data: response, requestData: plant })
@@ -62,6 +57,3 @@ const garden_db = {
     long: ''
   }
 }
-
-// https://source.unsplash.com/bmM_IdLd1SA/600x600
-// https://source.unsplash.com/_6rR_iP06p4/600x600
