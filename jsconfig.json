@@ -28,6 +28,12 @@
       ],
       "@routes/*": [
         "./src/routes/*"
+      ],
+      "@constants": [
+        "./src/config/constants"
+      ],
+      "@utils": [
+        "./src/utils"
       ]
     }
   },
