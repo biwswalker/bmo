@@ -2,6 +2,7 @@ import express from 'express'
 import { RESPONSE_CODE, RESPONSE_STATUS } from '@constants'
 import _ from 'lodash'
 import { plantService } from '@services'
+import { authorization } from '@middlewares'
 
 const GET_PLANT_ENDPOINT = '/plant'
 const INSERT_PLANT_ENDPOINT = '/plant'
@@ -26,7 +27,7 @@ router.get(PLANT_ENDPOINT, (req, res) => {
   })
 })
 
-router.post(INSERT_PLANT_ENDPOINT, (req, res) => {
+router.post(INSERT_PLANT_ENDPOINT, authorization, (req, res) => {
   console.log(`${INSERT_PLANT_ENDPOINT}...`)
   const name = _.get(req.body, 'name');
   const detail = _.get(req.body, 'detail');

@@ -3,12 +3,13 @@ import moment from 'moment'
 import { RESPONSE_CODE, RESPONSE_STATUS } from '@constants'
 import _ from 'lodash'
 import { reviewService } from '@services'
+import { authorization } from '@middlewares'
 
 const REVIEW_ENDPOINT = '/review'
 
 const router = express.Router()
 
-router.post(REVIEW_ENDPOINT, (req, res) => {
+router.post(REVIEW_ENDPOINT, authorization, (req, res) => {
   console.log(`Insert ${REVIEW_ENDPOINT}...`)
   const _id = _.get(req.body, '_id')
   const name = _.get(req.body, 'name', '')

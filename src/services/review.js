@@ -1,18 +1,9 @@
-import mongo from 'mongojs'
-import { database } from '@config'
-
-const { plant } = database
+import { Plant } from '@models/plant'
 
 const review = (_id, comment, callback = () => { }) => {
-  const o_id = mongo.ObjectId(_id)
-  plant.update(
-    { _id: o_id },
-    { $push: { comments: comment } },
-    (error, datas) => {
-      if (error) { return callback(null, error) }
-      callback(datas, null)
-    }
-  )
+  Plant.findByIdAndUpdate(_id, { $push: { comments: comment } })
+    .then(response => callback(response, null))
+    .catch(error => callback(null, error))
 }
 
 export default {
