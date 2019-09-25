@@ -1,26 +1,22 @@
-import { database } from '@config'
-
-const { plant } = database
+import { Plant } from '@models/plant'
 
 const suggestionSearch = (keyword, callback = () => { }) => {
-  plant.find({
+  Plant.find({
     $or: [
       { name: { '$regex': keyword } },
       { detail: { '$regex': keyword } },
       { category: { '$regex': keyword } },
       { tags: { $elemMatch: { '$regex': keyword } } }
     ]
-  }, (error, datas) => {
-    if (error) { return callback(null, error) }
-    callback(datas, null)
   })
+    .then(response => callback(response, null))
+    .catch(error => callback(null, error))
 }
 
 const search = (keyword, callback = () => { }) => {
-  plant.find({ name: keyword }, (error, datas) => {
-    if (error) { return callback(null, error) }
-    callback(datas, null)
-  })
+  Plant.find({ name: keyword })
+    .then(response => callback(response, null))
+    .catch(error => callback(null, error))
 }
 
 export default {

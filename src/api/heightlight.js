@@ -10,9 +10,9 @@ const HIGHLIGHT_ENDPOINT = '/highlight'
 const router = express.Router()
 
 router.get(HIGHLIGHT_ENDPOINT, (req, res) => {
-  console.log(`${HIGHLIGHT_ENDPOINT}...`)
   const currentMonth = Number(moment().format('M'))
   const season = times.season(currentMonth)
+  console.log(`${HIGHLIGHT_ENDPOINT}... season: ${season.name}`)
   highlightService.getHighlightPlant(season.name, (response, error) => {
     if (error) { return res.json({ code: RESPONSE_CODE.INTERNAL_SERVER_ERROR, status: RESPONSE_STATUS.FAILURE, error }) }
     const highlight = response.map(highlightResponse => _.pick(highlightResponse, ['_id', 'name', 'images', 'tags']))

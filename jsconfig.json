@@ -34,6 +34,12 @@
       ],
       "@utils": [
         "./src/utils"
+      ],
+      "@models/*": [
+        "./src/models/*"
+      ],
+      "@middlewares": [
+        "./src/middlewares"
       ]
     }
   },
