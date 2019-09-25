@@ -46,7 +46,7 @@ router.post(USER_ENDPOINT, async (req, res) => {
       .json({
         code: RESPONSE_CODE.OK,
         status: RESPONSE_STATUS.SUCCESS,
-        data: { ...enrolledUser, token },
+        data: { ...user, ...enrolledUser, token },
         requestData: user
       });
   })

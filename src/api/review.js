@@ -12,11 +12,11 @@ const router = express.Router()
 router.post(REVIEW_ENDPOINT, authorization, (req, res) => {
   console.log(`Insert ${REVIEW_ENDPOINT}...`)
   const _id = _.get(req.body, '_id')
-  const name = _.get(req.body, 'name', '')
   const rating = _.get(req.body, 'rating', 0)
   const comment = _.get(req.body, 'comment', '')
+  const userId = _.get(req, 'user._id', '')
   const createtime = moment().unix()
-  const commentObject = { name, rating, comment, createtime }
+  const commentObject = { userId, rating, comment, createtime }
   if (_.isEmpty(_id)) {
     return res.status(RESPONSE_CODE.BAD_REQUEST).json({ code: RESPONSE_CODE.BAD_REQUEST, status: RESPONSE_STATUS.FAILURE, error: 'Plant id is required!' })
   }
