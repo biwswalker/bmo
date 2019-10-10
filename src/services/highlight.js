@@ -1,12 +1,9 @@
-import { database } from '@config'
-
-const { plant } = database
+import { Plant } from '@models/plant'
 
 const getHighlightPlant = (season, callback = () => { }) => {
-  plant.find({ season: season }, (error, datas) => {
-    if (error) { return callback(null, error) }
-    callback(datas, null)
-  })
+  Plant.find({ season: season })
+    .then(response => callback(response, null))
+    .catch(error => callback(null, error))
 }
 
 export default {

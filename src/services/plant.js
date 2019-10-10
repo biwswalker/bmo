@@ -1,32 +1,34 @@
-import mongo from 'mongojs'
-import { database } from '@config'
-
-const { plant } = database
+import { Plant } from '@models/plant'
 
 const getPlant = (callback = () => { }) => {
-  plant.find((error, plantResponse) => {
-    if (error) { return callback(null, error) }
-    return callback(plantResponse, null)
-  })
+  Plant.find()
+    .then(response => callback(response, null))
+    .catch(error => callback(null, error))
+}
+
+const getGardenPlant = (_id, callback = () => { }) => {
+  Plant.find({ gardenId: _id })
+    .then(response => callback(response, null))
+    .catch(error => callback(null, error))
 }
 
 const getPlantById = (_id, callback = () => { }) => {
-  const o_id = mongo.ObjectId(_id)
-  plant.findOne({ _id: o_id }, (error, plantResponse) => {
-    if (error) { return callback(null, error) }
-    return callback(plantResponse, null)
-  })
+  Plant.findById(_id)
+    .then(response => callback(response, null))
+    .catch(error => callback(null, error))
 }
 
-const insertPlant = (plantObj, callback) => {
-  plant.save(plantObj, (error, plantResponse) => {
-    if (error) { return callback(null, error) }
-    return callback(plantResponse, null)
-  })
+const insertPlant = (plantObj, callback = () => { }) => {
+  const plant = new Plant(plantObj)
+
+  plant.save()
+    .then(response => callback(response, null))
+    .catch(error => callback(null, error))
 }
 
 export default {
   getPlant,
+  getGardenPlant,
   getPlantById,
   insertPlant,
 }

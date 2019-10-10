@@ -15,7 +15,9 @@
           "@api": "./src/api",
           "@routes": "./src/routes",
           "@constants": "./src/config/constants",
-          "@utils": "./src/utils"
+          "@utils": "./src/utils",
+          "@models": "./src/models",
+          "@middlewares": "./src/middlewares"
         }
       }
     ]
