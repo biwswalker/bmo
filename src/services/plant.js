@@ -6,6 +6,12 @@ const getPlant = (callback = () => { }) => {
     .catch(error => callback(null, error))
 }
 
+const getGardenPlant = (_id, callback = () => { }) => {
+  Plant.find({ gardenId: _id })
+    .then(response => callback(response, null))
+    .catch(error => callback(null, error))
+}
+
 const getPlantById = (_id, callback = () => { }) => {
   Plant.findById(_id)
     .then(response => callback(response, null))
@@ -22,6 +28,7 @@ const insertPlant = (plantObj, callback = () => { }) => {
 
 export default {
   getPlant,
+  getGardenPlant,
   getPlantById,
   insertPlant,
 }
