@@ -26,7 +26,7 @@ router.get(HIGHLIGHT_ENDPOINT, (req, res) => {
       })
 
       const rating = _.isEmpty(ratings) ? 0 : _.floor(_.mean(ratings))
-      return { ..._.pick(plants, ['_id', 'name', 'images', 'tags']), rating }
+      return { ..._.pick(plant, ['_id', 'name', 'images', 'tags']), rating }
     })
     const plantSorted = _.chunk(_.sortBy(plantWithRating, ['rating']).reverse(), 5);
     const highlight = _.get(plantSorted, '0', [])
