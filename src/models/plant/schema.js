@@ -8,20 +8,31 @@ const PlantSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 255
   },
-  detail: {
+  scientificName: {
+    type: String,
+    maxlength: 255
+  },
+  familyName: {
+    type: String,
+    maxlength: 255
+  },
+  anotherName: {
+    type: String,
+    maxlength: 255
+  },
+  botanicalDetail: {
+    type: String,
+  },
+  properties: {
+    type: String,
+  },
+  tags: [String],
+  gardenId: {
     type: String,
     required: true,
   },
-  tags: [String],
   images: [String],
-  season: String,
-  rating: Number,
   comments: Array,
-  category: String,
-  location: {
-    lat: String,
-    long: String,
-  },
 });
 
 export default PlantSchema

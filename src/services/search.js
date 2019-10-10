@@ -4,8 +4,11 @@ const suggestionSearch = (keyword, callback = () => { }) => {
   Plant.find({
     $or: [
       { name: { '$regex': keyword } },
-      { detail: { '$regex': keyword } },
-      { category: { '$regex': keyword } },
+      { botanicalDetail: { '$regex': keyword } },
+      { scientificName: { '$regex': keyword } },
+      { familyName: { '$regex': keyword } },
+      { anotherName: { '$regex': keyword } },
+      { properties: { '$regex': keyword } },
       { tags: { $elemMatch: { '$regex': keyword } } }
     ]
   })
