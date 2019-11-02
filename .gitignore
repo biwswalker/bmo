@@ -6,9 +6,9 @@ node_modules
 
 
 # production
+/public
 /build
 /dist
-# /public
 
 # misc
 .DS_Store
