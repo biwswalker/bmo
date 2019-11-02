@@ -11,8 +11,8 @@ function authorization(req, res, next) {
 
   try {
     // Verify token
-    const { _PRIVATE_KEY } = process.env
-    const decoded = jwt.verify(token, _PRIVATE_KEY)
+    const { PRIVATE_KEY } = process.env
+    const decoded = jwt.verify(token, PRIVATE_KEY)
     req.user = decoded;
     next();
   } catch (ex) {
