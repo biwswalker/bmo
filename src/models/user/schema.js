@@ -22,8 +22,8 @@ const UserSchema = new mongoose.Schema({
 UserSchema.methods.generateToken = function () {
   console.log('Generating token...')
   //get the private key from the config file -> environment variable
-  const { _PRIVATE_KEY } = process.env
-  const token = jwt.sign({ _id: this._id }, _PRIVATE_KEY);
+  const { PRIVATE_KEY } = process.env
+  const token = jwt.sign({ _id: this._id }, PRIVATE_KEY);
   return token;
 }
 
