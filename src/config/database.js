@@ -6,5 +6,5 @@ const databaseUrl = MONGO_URI || MDB_URI
 
 export default () => mongoose
   .connect(databaseUrl, { useNewUrlParser: true, useFindAndModify: false })
-  .then(() => console.log('Connected to Database...'))
-  .catch(err => console.error('Could not connect to Database...'));
+  .then(() => console.log(`Connected to Database...: ${databaseUrl}`))
+  .catch(err => console.error('Could not connect to Database...', err));
